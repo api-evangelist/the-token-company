@@ -1,0 +1,182 @@
+openapi: 3.1.0
+info:
+  title: The Token Company Compression Search API
+  version: '1.0'
+  description: LLM input compression middleware. One API call removes low-signal tokens from a prompt, a chat conversation, or web-search results before they reach a language model, cutting cost and latency while preserving output quality. Compression is performed by the bear family of models (bear-2 latest, bear-1.2 / bear-1.1 / bear-1 previous generations).
+  x-provenance:
+    generated: '2026-07-21'
+    method: generated
+    note: Faithfully reconstructed from the official Python SDK source (github.com/TheTokenCompany/the-token-company-python) and the public documentation at https://thetokencompany.com/docs. The provider does not publish an OpenAPI document; the API itself is invite-only. No behavior, field, endpoint, or error was invented.
+  contact:
+    name: The Token Company
+    url: https://thetokencompany.com/contact
+  license:
+    name: Proprietary
+servers:
+- url: https://api.thetokencompany.com
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Search
+  description: Compressed web search
+paths:
+  /v1/search:
+    post:
+      operationId: searchWeb
+      summary: Compressed web search
+      description: Run a web search and return compressed results, so an agent can consume search context at a fraction of the token cost.
+      tags:
+      - Search
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Compressed search results and token metrics.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/PaymentRequired'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/ServerError'
+components:
+  responses:
+    RateLimited:
+      description: Too many requests (SDK RateLimitError).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    PaymentRequired:
+      description: Insufficient balance or exceeded debt limit (SDK PaymentRequiredError).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Unexpected server error (SDK APIError, 5xx).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Invalid or missing API key (SDK AuthenticationError).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InvalidRequest:
+      description: Bad parameters (SDK InvalidRequestError).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    SearchResponse:
+      type: object
+      required:
+      - results
+      - query
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SearchResult'
+        query:
+          type: string
+        search_time:
+          type: number
+          format: float
+        original_input_tokens:
+          type: integer
+        output_tokens:
+          type: integer
+    SearchResult:
+      type: object
+      required:
+      - url
+      - title
+      - content
+      properties:
+        url:
+          type: string
+          format: uri
+        title:
+          type: string
+        content:
+          type: string
+          description: Compressed page content.
+        score:
+          type: number
+          format: float
+          nullable: true
+    Model:
+      type: string
+      enum:
+      - bear-2
+      - bear-1.2
+      - bear-1.1
+      - bear-1
+      default: bear-2
+      description: Compression model. bear-2 is the latest and recommended.
+    Error:
+      type: object
+      description: Error envelope; SDKs map the HTTP status to a typed exception.
+      properties:
+        message:
+          type: string
+        status_code:
+          type: integer
+    SearchRequest:
+      type: object
+      required:
+      - query
+      properties:
+        query:
+          type: string
+          description: The search query string.
+        max_results:
+          type: integer
+          default: 5
+          description: Maximum number of results to return.
+        search_depth:
+          type: string
+          enum:
+          - basic
+          - advanced
+          default: basic
+        include_raw_content:
+          type: boolean
+          default: false
+          description: Whether to include raw page content.
+        model:
+          $ref: '#/components/schemas/Model'
+        compression_settings:
+          type: object
+          properties:
+            aggressiveness:
+              type: number
+              format: float
+              minimum: 0.0
+              maximum: 1.0
+              default: 0.3
+        app_id:
+          type: string
+          maxLength: 255
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'API key issued by The Token Company, sent as `Authorization: Bearer ttc-...`.'
