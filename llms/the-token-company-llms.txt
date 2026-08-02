@@ -1,0 +1,43 @@
+# The Token Company
+
+> LLM input compression middleware. Remove low-signal tokens from prompts to cut costs, improve accuracy, and fit more context.
+
+The Token Company builds compression models (bear-2, bear-1.2) that remove low-signal tokens from LLM prompts before they reach the model. One API call compresses your input; you pass the compressed text to any LLM. Free tier includes up to 1B processed tokens per month. Backed by Y Combinator.
+
+## Installation
+
+- Python: `pip install the-token-company`
+- TypeScript: `npm install the-token-company`
+
+## Key Links
+
+- [Home](https://thetokencompany.com)
+- [Pricing](https://thetokencompany.com/pricing)
+- [Blog](https://thetokencompany.com/blog)
+- [Benchmarks](https://thetokencompany.com/benchmarks)
+- [Contact](https://thetokencompany.com/contact)
+- [Careers](https://thetokencompany.com/careers)
+- [Privacy Policy](https://thetokencompany.com/privacy)
+
+## Blog Posts
+
+- [Pax Historia Case Study](https://thetokencompany.com/blog/pax-historia): 193B tokens/mo customer improved quality with compression in a 268K-vote blind arena
+- [bear-1.1 Release](https://thetokencompany.com/blog/bear-1-1): Improved accuracy preservation and faster compression
+- [bear-1 Launch](https://thetokencompany.com/blog/bear-1): First LLM input compression model
+
+## Documentation
+
+- [Introduction](https://thetokencompany.com/docs): What is TTC, why compress, quick example
+- [Quickstart](https://thetokencompany.com/docs/quickstart): Install SDK, get API key, first compression
+- [About Compression](https://thetokencompany.com/docs/compression): Models, aggressiveness levels, how it works
+- [OpenAI](https://thetokencompany.com/docs/openai): Automatic compression for OpenAI API calls
+- [Vercel AI SDK](https://thetokencompany.com/docs/vercel-ai): Middleware compression for any AI SDK provider
+- [Anthropic](https://thetokencompany.com/docs/anthropic): Automatic compression for Claude API calls
+- [OpenRouter](https://thetokencompany.com/docs/openrouter): Compression for OpenRouter and OpenAI-compatible providers
+- [Protect Text](https://thetokencompany.com/docs/protect-text): Exclude content from compression with ttc_safe tags
+- [Data Retention](https://thetokencompany.com/docs/data-retention): Zero data retention policy
+- [Full docs as plain text](https://thetokencompany.com/docs/llms.txt): All documentation in a single text file for LLMs
+
+## Benchmarks
+
+- [FinanceBench](https://thetokencompany.com/benchmarks/financebench): Accuracy evaluation on real-world financial documents

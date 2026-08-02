@@ -1,0 +1,19 @@
+generated: '2026-07-21'
+method: searched
+source: https://thetokencompany.com ; https://status.thetokencompany.com/
+versioning:
+  scheme: uri-path
+  current: v1
+  model_versioning:
+    note: Compression capability is versioned by model generation.
+    current: bear-2
+    previous: [bear-1.2, bear-1.1, bear-1]
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No formal deprecation/Sunset-header policy published; older bear models remain callable and are labeled previous-generation.
+status_page: https://status.thetokencompany.com/
+sla:
+  url: null
+  note: Enterprise plan offers data residency and support commitments; no public numeric SLA published.
+deprecated_operations: []

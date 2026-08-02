@@ -1,0 +1,28 @@
+generated: '2026-07-21'
+method: searched
+source: https://thetokencompany.com/blog ; https://thetokencompany.com/llms.txt
+scheme: model-generation
+current_version: bear-2
+note: >-
+  The Token Company does not publish a dated API changelog; product evolution is
+  announced as model releases on the blog. Entries below are the model-release
+  milestones surfaced on the blog / llms.txt.
+entries:
+  - version: bear-2
+    type: model-release
+    breaking: false
+    highlights: Latest, recommended compression model; default across SDKs.
+  - version: bear-1.2
+    type: model-release
+    breaking: false
+    highlights: Previous-generation compression model.
+  - version: bear-1.1
+    type: model-release
+    breaking: false
+    url: https://thetokencompany.com/blog/bear-1-1
+    highlights: Improved accuracy preservation and faster compression.
+  - version: bear-1
+    type: model-release
+    breaking: false
+    url: https://thetokencompany.com/blog/bear-1
+    highlights: First LLM input compression model.

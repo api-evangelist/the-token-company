@@ -1,0 +1,25 @@
+generated: '2026-07-21'
+method: searched
+source: openapi/the-token-company-openapi.yml ; https://thetokencompany.com/docs/quickstart
+docs: https://thetokencompany.com/docs/quickstart
+summary:
+  types: [http]
+  http_schemes: [bearer]
+  api_key_prefix: "ttc-"
+  key_management: Dashboard at https://app.thetokencompany.com (accounts via Clerk at accounts.thetokencompany.com)
+  access_model: invite-only
+schemes:
+  - name: bearerAuth
+    type: http
+    scheme: bearer
+    header: Authorization
+    value_format: "Bearer ttc-..."
+    description: >-
+      All API requests authenticate with an API key issued by The Token Company,
+      sent in the Authorization header as a bearer token. Keys carry a ttc- prefix.
+      In the SDK wrappers the compression key is passed as compression_api_key,
+      separate from the downstream LLM provider key.
+    sources: [openapi/the-token-company-openapi.yml]
+notes:
+  - The API is currently invite-only; keys are provisioned after contacting the provider.
+  - No OAuth2 / OIDC surface for the compression API itself (dashboard sign-in uses Clerk).

@@ -1,0 +1,16 @@
+{
+  "provider": "the-token-company",
+  "sources": [
+    "the-token-company-compression-api-openapi.yml",
+    "the-token-company-search-api-openapi.yml"
+  ],
+  "outputs": [
+    "the-token-company-compression-api-openapi.yml",
+    "the-token-company-search-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

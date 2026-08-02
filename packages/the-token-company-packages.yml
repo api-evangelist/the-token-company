@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: searched
+source: https://pypi.org/project/the-token-company/ ; https://www.npmjs.com/package/the-token-company
+packages:
+  - language: python
+    registry: pypi
+    name: the-token-company
+    version: 0.4.1
+    url: https://pypi.org/project/the-token-company/
+    repository: https://github.com/TheTokenCompany/the-token-company-python
+    install: pip install the-token-company
+    official: true
+    license: MIT
+    description: Official Python SDK. Compress LLM prompts to reduce cost and latency; includes OpenAI/Anthropic drop-in wrappers.
+  - language: javascript
+    registry: npm
+    name: the-token-company
+    version: 0.4.0
+    url: https://www.npmjs.com/package/the-token-company
+    repository: https://github.com/TheTokenCompany/the-token-company-node
+    install: npm install the-token-company
+    official: true
+    description: Official Node.js / TypeScript SDK for The Token Company compression API.

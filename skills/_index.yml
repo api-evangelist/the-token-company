@@ -1,0 +1,12 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/the-token-company-openapi.yml
+skills:
+  - file: the-token-company-compress-prompt.md
+    name: Compress a prompt before an LLM call
+    api: openapi/the-token-company-openapi.yml
+    operations: [compressPrompt]
+  - file: the-token-company-compress-chat.md
+    name: Compress a chat conversation in one request
+    api: openapi/the-token-company-openapi.yml
+    operations: [compressChat]

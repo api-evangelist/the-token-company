@@ -1,0 +1,39 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/the-token-company-openapi.yml
+note: >-
+  The Token Company is a stateless compression API — requests and responses are
+  transient objects with no persisted, id-addressable resources. The "entities"
+  below are the request/response payload schemas, not stored records.
+entities:
+  - name: CompressRequest
+    kind: request
+    fields: [text, model, aggressiveness, app_id]
+  - name: CompressResponse
+    kind: response
+    fields: [output, output_tokens, original_input_tokens]
+    computed: [tokens_saved, compression_ratio]
+  - name: ChatCompressRequest
+    kind: request
+    fields: [messages, model, fmt, aggressiveness, system, strip_server_tool_results, skip_tool_use_ids, app_id]
+  - name: ChatCompressResponse
+    kind: response
+    fields: [messages, system, original_input_tokens, output_tokens, cache_hits, cache_misses, compression_time]
+  - name: SearchRequest
+    kind: request
+    fields: [query, max_results, search_depth, include_raw_content, model, compression_settings, app_id]
+  - name: SearchResponse
+    kind: response
+    fields: [results, query, search_time, original_input_tokens, output_tokens]
+  - name: SearchResult
+    kind: object
+    fields: [url, title, content, score]
+relationships:
+  - from: SearchResponse
+    to: SearchResult
+    type: has_many
+    via: results
+enums:
+  Model: [bear-2, bear-1.2, bear-1.1, bear-1]
+  search_depth: [basic, advanced]
+  fmt: [openai, anthropic]

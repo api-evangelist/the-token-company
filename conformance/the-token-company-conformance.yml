@@ -1,0 +1,21 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/the-token-company-openapi.yml ; https://trust.thetokencompany.com ; https://thetokencompany.com/docs/data-retention
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: API uses bearer API-key auth, not OAuth2 flows.
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use plain HTTP status + message body, not application/problem+json.
+  - id: bearer-token-rfc6750
+    conforms: true
+    evidence: "Authorization: Bearer <api-key> header."
+  - id: hipaa
+    conforms: true
+    evidence: HIPAA compliance advertised via Trust Center (trust.thetokencompany.com).
+  - id: zero-data-retention
+    conforms: true
+    evidence: Published zero-data-retention policy at /docs/data-retention.

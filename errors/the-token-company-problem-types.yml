@@ -1,0 +1,36 @@
+generated: '2026-07-21'
+method: searched
+source: https://thetokencompany.com/docs (error reference) ; openapi/the-token-company-openapi.yml
+format: http-status
+envelope:
+  description: >-
+    Errors are returned with a standard HTTP status code. The official SDKs map
+    each status to a typed exception; the JSON body carries a human-readable
+    message (and status_code on 5xx).
+  fields: [message, status_code]
+problems:
+  - status: 400
+    title: Bad parameters
+    sdk_exception: InvalidRequestError
+    remediation: Validate request parameters (non-empty text, model in the bear-* set, aggressiveness within 0.0-1.0).
+    source_operation: openapi/the-token-company-openapi.yml#compressPrompt
+  - status: 401
+    title: Invalid or missing API key
+    sdk_exception: AuthenticationError
+    remediation: "Send a valid Authorization: Bearer ttc-... header."
+  - status: 402
+    title: Insufficient balance
+    sdk_exception: PaymentRequiredError
+    remediation: Top up balance or resolve exceeded debt limit in the dashboard.
+  - status: 413
+    title: Payload too large
+    sdk_exception: RequestTooLargeError
+    remediation: Reduce input size or split the request; enable gzip for large payloads.
+  - status: 429
+    title: Too many requests
+    sdk_exception: RateLimitError
+    remediation: Back off and retry with exponential delay.
+  - status: 500
+    title: Unexpected server error
+    sdk_exception: APIError
+    remediation: Retry; if persistent, contact support.

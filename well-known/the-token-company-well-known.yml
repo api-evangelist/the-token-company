@@ -1,0 +1,19 @@
+generated: '2026-07-21'
+method: searched
+hosts:
+  - host: https://thetokencompany.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /llms.txt
+        status: 200
+        note: Saved verbatim at llms/the-token-company-llms.txt (not a .well-known path, indexed for reference).
+  - host: https://app.thetokencompany.com
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 307
+        note: Redirects to Clerk-hosted sign-in (accounts.thetokencompany.com); not a public OIDC discovery document.
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+notes:
+  - No usable /.well-known discovery documents were served; recorded for auditability.

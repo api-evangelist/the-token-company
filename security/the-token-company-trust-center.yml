@@ -1,0 +1,16 @@
+generated: '2026-07-21'
+method: searched
+source: https://thetokencompany.com (footer) ; https://trust.thetokencompany.com
+url: https://trust.thetokencompany.com
+certifications:
+  - HIPAA
+evidence:
+  - source: https://thetokencompany.com
+    keywords: [HIPAA Compliance, Trust Center]
+  - source: https://trust.thetokencompany.com
+    kind: trust-center-subdomain
+note: >-
+  A dedicated Trust Center subdomain is live and the site footer advertises HIPAA
+  compliance available via the Trust Center. The Trust Center is a JS-rendered
+  portal; only HIPAA was verifiable from the public site. Additional frameworks
+  (e.g. SOC 2) may be gated behind the portal and are not asserted here.

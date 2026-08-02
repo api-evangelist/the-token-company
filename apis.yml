@@ -1,8 +1,14 @@
 aid: the-token-company
 name: The Token Company
-description: The Token Company is a company surfaced as a portfolio company of y-combinator and added
-  to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  The Token Company builds LLM input-compression middleware. A single API call runs
+  a prompt, a full chat conversation, or web-search results through their bear
+  compression models (bear-2 latest, plus bear-1.2/1.1/1) to strip low-signal tokens
+  before the text reaches a language model, cutting cost and latency while preserving
+  output quality. It ships drop-in Python and Node.js SDKs that wrap the OpenAI,
+  Anthropic, Vercel AI SDK, and OpenRouter clients so existing apps compress
+  automatically, plus content-protection (ttc_safe) tags, per-app usage tagging, and a
+  zero-data-retention policy. A Y Combinator (W26) company based in San Francisco.
 url: https://raw.githubusercontent.com/api-evangelist/the-token-company/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,14 +16,115 @@ x-backed-by:
 - y-combinator
 x-tier: stub
 x-tier-reason: portfolio-lead
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 18
+  pass: local-v1
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
+image: https://thetokencompany.com/favicon.ico
 tags:
 - Company
-apis: []
+- LLM
+- Artificial Intelligence
+- Prompt Compression
+- Tokens
+- Cost Optimization
+- Developer Tools
+- Middleware
+- API
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: the-token-company:the-token-company-compression-api
+  name: The Token Company Compression API
+  description: Prompt and conversation compression
+  humanURL: https://thetokencompany.com/docs
+  baseURL: https://api.thetokencompany.com
+  tags:
+  - Compression
+  properties:
+  - type: OpenAPI
+    url: openapi/the-token-company-compression-api-openapi.yml
+- aid: the-token-company:the-token-company-search-api
+  name: The Token Company Search API
+  description: Compressed web search
+  humanURL: https://thetokencompany.com/docs
+  baseURL: https://api.thetokencompany.com
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/the-token-company-search-api-openapi.yml
+common:
+- type: DomainSecurity
+  url: security/the-token-company-domain-security.yml
+- type: DeveloperPortal
+  url: https://thetokencompany.com/docs
+- type: Documentation
+  url: https://thetokencompany.com/docs
+- type: APIReference
+  url: https://thetokencompany.com/docs
+- type: GettingStarted
+  url: https://thetokencompany.com/docs/quickstart
+- type: Blog
+  url: https://thetokencompany.com/blog
+- type: Support
+  url: https://thetokencompany.com/contact
+- type: GitHubOrganization
+  url: https://github.com/TheTokenCompany
+- type: Pricing
+  url: https://thetokencompany.com/pricing
+- type: SignUp
+  url: https://app.thetokencompany.com
+- type: TermsOfService
+  url: https://thetokencompany.com/terms-and-conditions
+- type: PrivacyPolicy
+  url: https://thetokencompany.com/privacy
+- type: StatusPage
+  url: https://status.thetokencompany.com/
+- type: TrustCenter
+  url: https://trust.thetokencompany.com
+- type: Compliance
+  url: https://trust.thetokencompany.com
+- type: Packages
+  url: packages/the-token-company-packages.yml
+- type: SDKs
+  url: packages/the-token-company-packages.yml
+- type: Authentication
+  url: authentication/the-token-company-authentication.yml
+- type: ErrorCatalog
+  url: errors/the-token-company-problem-types.yml
+- type: Conventions
+  url: conventions/the-token-company-conventions.yml
+- type: Lifecycle
+  url: lifecycle/the-token-company-lifecycle.yml
+- type: ChangeLog
+  url: changelog/the-token-company-changelog.yml
+- type: MCPServer
+  url: mcp/the-token-company-mcp.yml
+- type: LLMsTxt
+  url: llms/the-token-company-llms.txt
+- type: Conformance
+  url: conformance/the-token-company-conformance.yml
+- type: DataModel
+  url: data-model/the-token-company-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml

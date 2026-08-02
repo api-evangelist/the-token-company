@@ -1,0 +1,41 @@
+generated: '2026-07-21'
+method: searched
+source: https://thetokencompany.com/docs ; github.com/TheTokenCompany/the-token-company-python
+authentication:
+  style: bearer
+  header: Authorization
+  ref: authentication/the-token-company-authentication.yml
+idempotency:
+  supported: false
+  note: Compression endpoints are effectively idempotent for identical input (no side effects), but the API documents no Idempotency-Key contract.
+pagination:
+  supported: false
+  note: No list endpoints; responses are single objects. Web search caps results via max_results.
+request_payload:
+  content_type: application/json
+  gzip: >-
+    Optional gzip of the request body (Content-Encoding: gzip) for large inputs;
+    the SDK exposes gzip=True (up to ~2.2x faster on 1M+ token inputs).
+content_protection:
+  mechanism: <ttc_safe>...</ttc_safe> tags
+  note: Text wrapped in ttc_safe tags is excluded from compression and passes through unchanged.
+usage_tagging:
+  field: app_id
+  note: Optional application identifier (max 255 chars) tags requests for usage tracking, per-request or client-level.
+compression_control:
+  field: aggressiveness
+  range: 0.0 - 1.0
+  default: 0.2
+  note: Chat compression also accepts a per-role aggressiveness map.
+versioning:
+  ref: lifecycle/the-token-company-lifecycle.yml
+  note: API is /v1; compression capability is versioned by model (bear-2 latest).
+error_envelope:
+  ref: errors/the-token-company-problem-types.yml
+  note: HTTP status codes mapped to typed SDK exceptions.
+rate_limiting:
+  signal: HTTP 429 (RateLimitError)
+  note: No documented rate-limit response headers; retry with backoff.
+data_retention:
+  policy: zero data retention
+  docs: https://thetokencompany.com/docs/data-retention

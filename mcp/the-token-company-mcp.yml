@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/the-token-company-openapi.yml
+note: >-
+  No official first-party hosted/remote MCP server was found. A third-party
+  OpenCode plugin (@drfok/opencode-ttc-plugin on npm) exposes input compression
+  via the API, but is not published by The Token Company. The tools below are a
+  candidate MCP surface derived one-per-operation from the API.
+server:
+  name: the-token-company
+  transport: http
+  url: null
+tools:
+  - name: compress_prompt
+    description: Compress a single block of prompt text to reduce LLM cost and latency.
+    source_operation: openapi/the-token-company-openapi.yml#compressPrompt
+  - name: compress_chat
+    description: Compress a whole OpenAI/Anthropic message array in one request.
+    source_operation: openapi/the-token-company-openapi.yml#compressChat
+  - name: search_web
+    description: Run a web search and return compressed results.
+    source_operation: openapi/the-token-company-openapi.yml#searchWeb

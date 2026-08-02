@@ -1,0 +1,26 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for The Token Company
+  version: 1.0.0
+extends: openapi/the-token-company-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-enriched: '2026-07-21'
+      x-apievangelist-provenance: >-
+        OpenAPI reconstructed from the official Python SDK source and public docs;
+        provider publishes no OpenAPI. Faithful, not authoritative.
+  - target: $.info
+    update:
+      x-artifact-crosswalk:
+        authentication: authentication/the-token-company-authentication.yml
+        errors: errors/the-token-company-problem-types.yml
+        conventions: conventions/the-token-company-conventions.yml
+        lifecycle: lifecycle/the-token-company-lifecycle.yml
+        data_model: data-model/the-token-company-data-model.yml
+  - target: $.paths['/v1/compress'].post
+    update:
+      x-agentic-access:
+        action-class: acting
+        consequence: write
+        idempotent: true
