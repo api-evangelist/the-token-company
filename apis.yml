@@ -74,6 +74,8 @@ apis:
   - type: OpenAPI
     url: openapi/the-token-company-search-api-openapi.yml
 common:
+- type: Overlay
+  url: overlays/the-token-company-overlay.yaml
 - type: DomainSecurity
   url: security/the-token-company-domain-security.yml
 - type: DeveloperPortal
