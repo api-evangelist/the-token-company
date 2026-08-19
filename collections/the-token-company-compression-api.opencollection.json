@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "The Token Company Compression API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Compression",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Compress a prompt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.thetokencompany.com/v1/compress",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Compress a single block of prompt text. Returns the compressed output plus token counts before and after compression."
+        },
+        {
+          "info": {
+            "name": "Compress a chat conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.thetokencompany.com/v1/chat/compress",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Compress a whole OpenAI- or Anthropic-format message array in a single request. Assistant messages pass through unchanged so the downstream provider's KV cache stays warm; re-sent history is served from a server-side cache."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

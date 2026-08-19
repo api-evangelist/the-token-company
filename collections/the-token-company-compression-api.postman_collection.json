@@ -1,0 +1,875 @@
+{
+  "item": [
+    {
+      "id": "e0548b8b-2ab7-47a5-b648-66675164b4f1",
+      "name": "Compression",
+      "description": {
+        "content": "Prompt and conversation compression",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a13575b1-0ea5-4942-8d71-67a318401f90",
+          "name": "Compress a prompt",
+          "request": {
+            "name": "Compress a prompt",
+            "description": {
+              "content": "Compress a single block of prompt text. Returns the compressed output plus token counts before and after compression.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "compress"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"<string>\",\n  \"model\": \"bear-2\",\n  \"aggressiveness\": 0.2,\n  \"app_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9a3f8ea3-83dc-4bed-9673-a62edd125f02",
+              "name": "Compressed text and token metrics.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "compress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"model\": \"bear-2\",\n  \"aggressiveness\": 0.2,\n  \"app_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"output\": \"string\",\n  \"output_tokens\": 2842,\n  \"original_input_tokens\": 487\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fab3a1c5-ea3e-4c81-bcbc-38a647f5a062",
+              "name": "Bad parameters (SDK InvalidRequestError).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "compress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"model\": \"bear-2\",\n  \"aggressiveness\": 0.2,\n  \"app_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status_code\": 1370\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d96bdba6-94b6-48df-babd-ae982aa37ebe",
+              "name": "Invalid or missing API key (SDK AuthenticationError).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "compress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"model\": \"bear-2\",\n  \"aggressiveness\": 0.2,\n  \"app_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status_code\": 1370\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f785c41-43e9-41f2-ab70-f1889ee624a2",
+              "name": "Insufficient balance or exceeded debt limit (SDK PaymentRequiredError).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "compress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"model\": \"bear-2\",\n  \"aggressiveness\": 0.2,\n  \"app_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status_code\": 1370\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "79c027ce-5da8-45d2-ab9a-2c4ffe25dc77",
+              "name": "Payload exceeds size limits (SDK RequestTooLargeError).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "compress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"model\": \"bear-2\",\n  \"aggressiveness\": 0.2,\n  \"app_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status_code\": 1370\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7471008-c0ec-4f72-bf2e-88ba3db34cab",
+              "name": "Too many requests (SDK RateLimitError).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "compress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"model\": \"bear-2\",\n  \"aggressiveness\": 0.2,\n  \"app_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status_code\": 1370\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11ad56c8-9425-4a11-ab97-aafefa32b8b0",
+              "name": "Unexpected server error (SDK APIError, 5xx).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "compress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"model\": \"bear-2\",\n  \"aggressiveness\": 0.2,\n  \"app_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status_code\": 1370\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23f233da-4cb2-4929-b715-c46c3dda43e4",
+          "name": "Compress a chat conversation",
+          "request": {
+            "name": "Compress a chat conversation",
+            "description": {
+              "content": "Compress a whole OpenAI- or Anthropic-format message array in a single request. Assistant messages pass through unchanged so the downstream provider's KV cache stays warm; re-sent history is served from a server-side cache.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "chat",
+                "compress"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"messages\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"model\": \"bear-2\",\n  \"fmt\": \"openai\",\n  \"aggressiveness\": \"<float>\",\n  \"system\": {},\n  \"strip_server_tool_results\": false,\n  \"skip_tool_use_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"app_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "09ec4dce-d435-4b3e-8ab8-ceef8310f7d2",
+              "name": "Compressed message array and token metrics.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chat",
+                    "compress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"messages\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"model\": \"bear-2\",\n  \"fmt\": \"openai\",\n  \"aggressiveness\": \"<float>\",\n  \"system\": {},\n  \"strip_server_tool_results\": false,\n  \"skip_tool_use_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"app_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": [],\n  \"original_input_tokens\": 8101,\n  \"output_tokens\": 2245,\n  \"system\": {},\n  \"cache_hits\": 5413,\n  \"cache_misses\": 6287,\n  \"compression_time\": 7303.207141351599\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e7fc0ef-f350-4c92-8437-0e3522289780",
+              "name": "Bad parameters (SDK InvalidRequestError).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chat",
+                    "compress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"messages\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"model\": \"bear-2\",\n  \"fmt\": \"openai\",\n  \"aggressiveness\": \"<float>\",\n  \"system\": {},\n  \"strip_server_tool_results\": false,\n  \"skip_tool_use_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"app_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status_code\": 1370\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1dd0c3f3-716e-4445-9128-68c15b8a20d3",
+              "name": "Invalid or missing API key (SDK AuthenticationError).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chat",
+                    "compress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"messages\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"model\": \"bear-2\",\n  \"fmt\": \"openai\",\n  \"aggressiveness\": \"<float>\",\n  \"system\": {},\n  \"strip_server_tool_results\": false,\n  \"skip_tool_use_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"app_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status_code\": 1370\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49356509-cce1-40a0-b67b-f7a2b76223f1",
+              "name": "Insufficient balance or exceeded debt limit (SDK PaymentRequiredError).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chat",
+                    "compress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"messages\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"model\": \"bear-2\",\n  \"fmt\": \"openai\",\n  \"aggressiveness\": \"<float>\",\n  \"system\": {},\n  \"strip_server_tool_results\": false,\n  \"skip_tool_use_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"app_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status_code\": 1370\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b490a338-e68a-4117-adc5-5aaa8504a4d4",
+              "name": "Payload exceeds size limits (SDK RequestTooLargeError).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chat",
+                    "compress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"messages\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"model\": \"bear-2\",\n  \"fmt\": \"openai\",\n  \"aggressiveness\": \"<float>\",\n  \"system\": {},\n  \"strip_server_tool_results\": false,\n  \"skip_tool_use_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"app_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status_code\": 1370\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21578531-ff29-48ec-925a-d17124106f03",
+              "name": "Too many requests (SDK RateLimitError).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chat",
+                    "compress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"messages\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"model\": \"bear-2\",\n  \"fmt\": \"openai\",\n  \"aggressiveness\": \"<float>\",\n  \"system\": {},\n  \"strip_server_tool_results\": false,\n  \"skip_tool_use_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"app_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status_code\": 1370\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9637c64-a028-400b-959c-dd4f2b7dee3e",
+              "name": "Unexpected server error (SDK APIError, 5xx).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chat",
+                    "compress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"messages\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"model\": \"bear-2\",\n  \"fmt\": \"openai\",\n  \"aggressiveness\": \"<float>\",\n  \"system\": {},\n  \"strip_server_tool_results\": false,\n  \"skip_tool_use_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"app_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status_code\": 1370\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.thetokencompany.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "29f90391-0b66-4dbf-b6cf-2d6617bc0e4e",
+    "name": "The Token Company Compression API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "LLM input compression middleware. One API call removes low-signal tokens from a prompt, a chat conversation, or web-search results before they reach a language model, cutting cost and latency while preserving output quality. Compression is performed by the bear family of models (bear-2 latest, bear-1.2 / bear-1.1 / bear-1 previous generations).\n\nContact Support:\n Name: The Token Company",
+      "type": "text/plain"
+    }
+  }
+}

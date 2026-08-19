@@ -1,0 +1,402 @@
+{
+  "item": [
+    {
+      "id": "43d98b33-35f2-443d-aa85-b4523bf2de57",
+      "name": "Search",
+      "description": {
+        "content": "Compressed web search",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9763b399-964e-4472-b810-632df39238bc",
+          "name": "Compressed web search",
+          "request": {
+            "name": "Compressed web search",
+            "description": {
+              "content": "Run a web search and return compressed results, so an agent can consume search context at a fraction of the token cost.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"max_results\": 5,\n  \"search_depth\": \"basic\",\n  \"include_raw_content\": false,\n  \"model\": \"bear-2\",\n  \"compression_settings\": {\n    \"aggressiveness\": 0.3\n  },\n  \"app_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6b0745ae-d2f9-4a46-ae5f-f2aa7aa6db9a",
+              "name": "Compressed search results and token metrics.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"max_results\": 5,\n  \"search_depth\": \"basic\",\n  \"include_raw_content\": false,\n  \"model\": \"bear-2\",\n  \"compression_settings\": {\n    \"aggressiveness\": 0.3\n  },\n  \"app_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"url\": \"https://lvmVPEPhYTFsIzeLCA.hmKA3pGnGTmpvmVXjg3RsaCH2Afz3eH7kBOj7ajhXBx.eiE6rX4FZT7.IotHaOohPZ\",\n      \"title\": \"string\",\n      \"content\": \"string\",\n      \"score\": 8114.695209099769\n    },\n    {\n      \"url\": \"https://IntDcMpcyYd.icpYqizkpmwDuistF2E5Xx8wwKTL8BgTYaP-Z20QI-Qw6,WfJ\",\n      \"title\": \"string\",\n      \"content\": \"string\",\n      \"score\": 3708.7853779529046\n    }\n  ],\n  \"query\": \"string\",\n  \"search_time\": 989.4242562758016,\n  \"original_input_tokens\": 5609,\n  \"output_tokens\": 2216\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "107c8a54-94a1-4b95-a398-5604747f86eb",
+              "name": "Bad parameters (SDK InvalidRequestError).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"max_results\": 5,\n  \"search_depth\": \"basic\",\n  \"include_raw_content\": false,\n  \"model\": \"bear-2\",\n  \"compression_settings\": {\n    \"aggressiveness\": 0.3\n  },\n  \"app_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status_code\": 4760\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aab7d98a-0a19-4eea-bfab-beb5707118b6",
+              "name": "Invalid or missing API key (SDK AuthenticationError).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"max_results\": 5,\n  \"search_depth\": \"basic\",\n  \"include_raw_content\": false,\n  \"model\": \"bear-2\",\n  \"compression_settings\": {\n    \"aggressiveness\": 0.3\n  },\n  \"app_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status_code\": 4760\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08a4f5e2-0c17-48a3-a777-82346fa45eb9",
+              "name": "Insufficient balance or exceeded debt limit (SDK PaymentRequiredError).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"max_results\": 5,\n  \"search_depth\": \"basic\",\n  \"include_raw_content\": false,\n  \"model\": \"bear-2\",\n  \"compression_settings\": {\n    \"aggressiveness\": 0.3\n  },\n  \"app_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status_code\": 4760\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4bbd6a6-7321-4c03-b978-42aa523a062f",
+              "name": "Too many requests (SDK RateLimitError).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"max_results\": 5,\n  \"search_depth\": \"basic\",\n  \"include_raw_content\": false,\n  \"model\": \"bear-2\",\n  \"compression_settings\": {\n    \"aggressiveness\": 0.3\n  },\n  \"app_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status_code\": 4760\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3da763a1-2547-4c7e-a24f-1f32a45872b4",
+              "name": "Unexpected server error (SDK APIError, 5xx).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"max_results\": 5,\n  \"search_depth\": \"basic\",\n  \"include_raw_content\": false,\n  \"model\": \"bear-2\",\n  \"compression_settings\": {\n    \"aggressiveness\": 0.3\n  },\n  \"app_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status_code\": 4760\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.thetokencompany.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7ce73ef4-9622-4bf0-8c8f-d19d0cff15e2",
+    "name": "The Token Company Compression Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "LLM input compression middleware. One API call removes low-signal tokens from a prompt, a chat conversation, or web-search results before they reach a language model, cutting cost and latency while preserving output quality. Compression is performed by the bear family of models (bear-2 latest, bear-1.2 / bear-1.1 / bear-1 previous generations).\n\nContact Support:\n Name: The Token Company",
+      "type": "text/plain"
+    }
+  }
+}
