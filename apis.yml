@@ -96,6 +96,8 @@ apis:
   - type: OpenAPI
     url: openapi/the-token-company-search-api-openapi.yml
 common:
+- type: Website
+  url: https://www.thetokencompany.com/
 - type: Overlay
   url: overlays/the-token-company-overlay.yaml
 - type: DomainSecurity
