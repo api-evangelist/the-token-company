@@ -1,8 +1,7 @@
 {
   "provider": "the-token-company",
   "sources": [
-    "the-token-company-compression-api-openapi.yml",
-    "the-token-company-search-api-openapi.yml"
+    "_original/the-token-company-openapi.yml"
   ],
   "outputs": [
     "the-token-company-compression-api-openapi.yml",
@@ -11,6 +10,13 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "the-token-company-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "the-token-company-compression-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "the-token-company-search-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
