@@ -93,8 +93,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    PaymentRequired:
-      description: Insufficient balance or exceeded debt limit (SDK PaymentRequiredError).
+    InvalidRequest:
+      description: Bad parameters (SDK InvalidRequestError).
       content:
         application/json:
           schema:
@@ -105,25 +105,78 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Invalid or missing API key (SDK AuthenticationError).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     ServerError:
       description: Unexpected server error (SDK APIError, 5xx).
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    InvalidRequest:
-      description: Bad parameters (SDK InvalidRequestError).
+    PaymentRequired:
+      description: Insufficient balance or exceeded debt limit (SDK PaymentRequiredError).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Invalid or missing API key (SDK AuthenticationError).
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      description: Error envelope; SDKs map the HTTP status to a typed exception.
+      properties:
+        message:
+          type: string
+        status_code:
+          type: integer
+    ChatCompressRequest:
+      type: object
+      required:
+      - messages
+      properties:
+        messages:
+          type: array
+          items:
+            type: object
+          description: OpenAI- or Anthropic-format message array.
+        model:
+          $ref: '#/components/schemas/Model'
+        fmt:
+          type: string
+          enum:
+          - openai
+          - anthropic
+          default: openai
+          description: Message-format dialect controlling block walking.
+        aggressiveness:
+          oneOf:
+          - type: number
+            format: float
+            minimum: 0.0
+            maximum: 1.0
+          - type: object
+            additionalProperties:
+              type: number
+              format: float
+            description: Per-role aggressiveness map keyed by role.
+          default: 0.2
+        system:
+          description: Anthropic top-level system prompt (string or block array).
+        strip_server_tool_results:
+          type: boolean
+          default: false
+          description: Drop Anthropic server tool-result blocks.
+        skip_tool_use_ids:
+          type: array
+          items:
+            type: string
+          description: Anthropic tool_result ids to leave uncompressed.
+        app_id:
+          type: string
+          maxLength: 255
     Model:
       type: string
       enum:
@@ -133,14 +186,22 @@ components:
       - bear-1
       default: bear-2
       description: Compression model. bear-2 is the latest and recommended.
-    Error:
+    CompressResponse:
       type: object
-      description: Error envelope; SDKs map the HTTP status to a typed exception.
+      required:
+      - output
+      - output_tokens
+      - original_input_tokens
       properties:
-        message:
+        output:
           type: string
-        status_code:
+          description: The compressed text.
+        output_tokens:
           type: integer
+          description: Token count after compression.
+        original_input_tokens:
+          type: integer
+          description: Token count before compression.
     CompressRequest:
       type: object
       required:
@@ -189,67 +250,6 @@ components:
           type: number
           format: float
           description: Server compression time in seconds.
-    CompressResponse:
-      type: object
-      required:
-      - output
-      - output_tokens
-      - original_input_tokens
-      properties:
-        output:
-          type: string
-          description: The compressed text.
-        output_tokens:
-          type: integer
-          description: Token count after compression.
-        original_input_tokens:
-          type: integer
-          description: Token count before compression.
-    ChatCompressRequest:
-      type: object
-      required:
-      - messages
-      properties:
-        messages:
-          type: array
-          items:
-            type: object
-          description: OpenAI- or Anthropic-format message array.
-        model:
-          $ref: '#/components/schemas/Model'
-        fmt:
-          type: string
-          enum:
-          - openai
-          - anthropic
-          default: openai
-          description: Message-format dialect controlling block walking.
-        aggressiveness:
-          oneOf:
-          - type: number
-            format: float
-            minimum: 0.0
-            maximum: 1.0
-          - type: object
-            additionalProperties:
-              type: number
-              format: float
-            description: Per-role aggressiveness map keyed by role.
-          default: 0.2
-        system:
-          description: Anthropic top-level system prompt (string or block array).
-        strip_server_tool_results:
-          type: boolean
-          default: false
-          description: Drop Anthropic server tool-result blocks.
-        skip_tool_use_ids:
-          type: array
-          items:
-            type: string
-          description: Anthropic tool_result ids to leave uncompressed.
-        app_id:
-          type: string
-          maxLength: 255
   securitySchemes:
     bearerAuth:
       type: http
