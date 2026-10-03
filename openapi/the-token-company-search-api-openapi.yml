@@ -72,23 +72,6 @@ components:
           type: integer
         output_tokens:
           type: integer
-    Error:
-      type: object
-      description: Error envelope; SDKs map the HTTP status to a typed exception.
-      properties:
-        message:
-          type: string
-        status_code:
-          type: integer
-    Model:
-      type: string
-      enum:
-      - bear-2
-      - bear-1.2
-      - bear-1.1
-      - bear-1
-      default: bear-2
-      description: Compression model. bear-2 is the latest and recommended.
     SearchResult:
       type: object
       required:
@@ -108,6 +91,23 @@ components:
           type: number
           format: float
           nullable: true
+    Error:
+      type: object
+      description: Error envelope; SDKs map the HTTP status to a typed exception.
+      properties:
+        message:
+          type: string
+        status_code:
+          type: integer
+    Model:
+      type: string
+      enum:
+      - bear-2
+      - bear-1.2
+      - bear-1.1
+      - bear-1
+      default: bear-2
+      description: Compression model. bear-2 is the latest and recommended.
     SearchRequest:
       type: object
       required:
@@ -145,8 +145,8 @@ components:
           type: string
           maxLength: 255
   responses:
-    InvalidRequest:
-      description: Bad parameters (SDK InvalidRequestError).
+    ServerError:
+      description: Unexpected server error (SDK APIError, 5xx).
       content:
         application/json:
           schema:
@@ -157,8 +157,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    ServerError:
-      description: Unexpected server error (SDK APIError, 5xx).
+    Unauthorized:
+      description: Invalid or missing API key (SDK AuthenticationError).
       content:
         application/json:
           schema:
@@ -169,8 +169,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Invalid or missing API key (SDK AuthenticationError).
+    InvalidRequest:
+      description: Bad parameters (SDK InvalidRequestError).
       content:
         application/json:
           schema:
