@@ -72,42 +72,6 @@ components:
           type: integer
         output_tokens:
           type: integer
-    SearchResult:
-      type: object
-      required:
-      - url
-      - title
-      - content
-      properties:
-        url:
-          type: string
-          format: uri
-        title:
-          type: string
-        content:
-          type: string
-          description: Compressed page content.
-        score:
-          type: number
-          format: float
-          nullable: true
-    Error:
-      type: object
-      description: Error envelope; SDKs map the HTTP status to a typed exception.
-      properties:
-        message:
-          type: string
-        status_code:
-          type: integer
-    Model:
-      type: string
-      enum:
-      - bear-2
-      - bear-1.2
-      - bear-1.1
-      - bear-1
-      default: bear-2
-      description: Compression model. bear-2 is the latest and recommended.
     SearchRequest:
       type: object
       required:
@@ -144,9 +108,45 @@ components:
         app_id:
           type: string
           maxLength: 255
+    Model:
+      type: string
+      enum:
+      - bear-2
+      - bear-1.2
+      - bear-1.1
+      - bear-1
+      default: bear-2
+      description: Compression model. bear-2 is the latest and recommended.
+    Error:
+      type: object
+      description: Error envelope; SDKs map the HTTP status to a typed exception.
+      properties:
+        message:
+          type: string
+        status_code:
+          type: integer
+    SearchResult:
+      type: object
+      required:
+      - url
+      - title
+      - content
+      properties:
+        url:
+          type: string
+          format: uri
+        title:
+          type: string
+        content:
+          type: string
+          description: Compressed page content.
+        score:
+          type: number
+          format: float
+          nullable: true
   responses:
-    ServerError:
-      description: Unexpected server error (SDK APIError, 5xx).
+    Unauthorized:
+      description: Invalid or missing API key (SDK AuthenticationError).
       content:
         application/json:
           schema:
@@ -157,20 +157,20 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Invalid or missing API key (SDK AuthenticationError).
+    InvalidRequest:
+      description: Bad parameters (SDK InvalidRequestError).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Unexpected server error (SDK APIError, 5xx).
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
     PaymentRequired:
       description: Insufficient balance or exceeded debt limit (SDK PaymentRequiredError).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InvalidRequest:
-      description: Bad parameters (SDK InvalidRequestError).
       content:
         application/json:
           schema:

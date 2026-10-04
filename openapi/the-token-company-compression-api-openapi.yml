@@ -86,34 +86,44 @@ paths:
         '500':
           $ref: '#/components/responses/ServerError'
 components:
+  responses:
+    RequestTooLarge:
+      description: Payload exceeds size limits (SDK RequestTooLargeError).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Invalid or missing API key (SDK AuthenticationError).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    RateLimited:
+      description: Too many requests (SDK RateLimitError).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InvalidRequest:
+      description: Bad parameters (SDK InvalidRequestError).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Unexpected server error (SDK APIError, 5xx).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    PaymentRequired:
+      description: Insufficient balance or exceeded debt limit (SDK PaymentRequiredError).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    ChatCompressResponse:
-      type: object
-      required:
-      - messages
-      - original_input_tokens
-      - output_tokens
-      properties:
-        messages:
-          type: array
-          items:
-            type: object
-          description: The compressed message array.
-        system:
-          description: The compressed system prompt, when supplied.
-        original_input_tokens:
-          type: integer
-        output_tokens:
-          type: integer
-        cache_hits:
-          type: integer
-          description: Messages served from the server-side cache.
-        cache_misses:
-          type: integer
-        compression_time:
-          type: number
-          format: float
-          description: Server compression time in seconds.
     ChatCompressRequest:
       type: object
       required:
@@ -159,14 +169,31 @@ components:
         app_id:
           type: string
           maxLength: 255
-    Error:
+    CompressResponse:
       type: object
-      description: Error envelope; SDKs map the HTTP status to a typed exception.
+      required:
+      - output
+      - output_tokens
+      - original_input_tokens
       properties:
-        message:
+        output:
           type: string
-        status_code:
+          description: The compressed text.
+        output_tokens:
           type: integer
+          description: Token count after compression.
+        original_input_tokens:
+          type: integer
+          description: Token count before compression.
+    Model:
+      type: string
+      enum:
+      - bear-2
+      - bear-1.2
+      - bear-1.1
+      - bear-1
+      default: bear-2
+      description: Compression model. bear-2 is the latest and recommended.
     CompressRequest:
       type: object
       required:
@@ -188,68 +215,41 @@ components:
           type: string
           maxLength: 255
           description: Optional application identifier for usage tracking.
-    Model:
-      type: string
-      enum:
-      - bear-2
-      - bear-1.2
-      - bear-1.1
-      - bear-1
-      default: bear-2
-      description: Compression model. bear-2 is the latest and recommended.
-    CompressResponse:
+    Error:
+      type: object
+      description: Error envelope; SDKs map the HTTP status to a typed exception.
+      properties:
+        message:
+          type: string
+        status_code:
+          type: integer
+    ChatCompressResponse:
       type: object
       required:
-      - output
-      - output_tokens
+      - messages
       - original_input_tokens
+      - output_tokens
       properties:
-        output:
-          type: string
-          description: The compressed text.
-        output_tokens:
-          type: integer
-          description: Token count after compression.
+        messages:
+          type: array
+          items:
+            type: object
+          description: The compressed message array.
+        system:
+          description: The compressed system prompt, when supplied.
         original_input_tokens:
           type: integer
-          description: Token count before compression.
-  responses:
-    ServerError:
-      description: Unexpected server error (SDK APIError, 5xx).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    RateLimited:
-      description: Too many requests (SDK RateLimitError).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Invalid or missing API key (SDK AuthenticationError).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    PaymentRequired:
-      description: Insufficient balance or exceeded debt limit (SDK PaymentRequiredError).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    RequestTooLarge:
-      description: Payload exceeds size limits (SDK RequestTooLargeError).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InvalidRequest:
-      description: Bad parameters (SDK InvalidRequestError).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+        output_tokens:
+          type: integer
+        cache_hits:
+          type: integer
+          description: Messages served from the server-side cache.
+        cache_misses:
+          type: integer
+        compression_time:
+          type: number
+          format: float
+          description: Server compression time in seconds.
   securitySchemes:
     bearerAuth:
       type: http
