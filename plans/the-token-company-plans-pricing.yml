@@ -1,0 +1,53 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-07'
+method: searched
+source: https://thetokencompany.com/pricing
+sources:
+- https://thetokencompany.com/pricing
+provenance:
+  tool: all/0-working/economics/harvest_pricing.py
+  run: 20261007T104522
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: negotiated
+delivery:
+  delivery: managed+licensed
+  method: page
+  read: '2026-10-07'
+  evidence: Option for on-premise deployment in your VPC
+published: false
+note: 'No numeric price is published on the pricing page; Page states charging is based on tokens removed
+  by compression (example: 10M in, 4M removed, charged for 4M), but no numeric rate is published; both
+  tiers are quote-based. Enterprise offers on-premise deployment in customer VPC.'
+plan_count: 2
+plans:
+- name: Pro
+  price_text: Get a quote
+  period: none
+  included_quota: All compression models, Personalized compression models, Priority support, Dedicated
+    Slack support
+- name: Enterprise
+  price_text: Talk to us
+  period: none
+  included_quota: Everything in Pro, plus forward deployed engineering support, data residency control,
+    advanced security & compliance, option for on-premise deployment in your VPC
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Pro
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Enterprise
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
