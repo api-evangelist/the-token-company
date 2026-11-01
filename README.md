@@ -64,6 +64,126 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-The Token Company is a company surfaced as a portfolio company of y-combinator and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+The Token Company builds LLM input-compression middleware. A single API call runs a prompt, a full chat conversation, or web-search results through their bear compression models (bear-2 latest, plus bear-1.2/1.1/1) to strip low-signal tokens before the text reaches a language model, cutting cost and latency while preserving output quality. It ships drop-in Python and Node.js SDKs that wrap the OpenAI, Anthropic, Vercel AI SDK, and OpenRouter clients so existing apps compress automatically, plus content-protection (ttc_safe) tags, per-app usage tagging, and a zero-data-retention policy. A Y Combinator (W26) company based in San Francisco.
 
-Backed by: y-combinator
+**Areas:** Company · LLM · Artificial Intelligence · Prompt Compression · Tokens · Cost Optimization · Developer Tools · Middleware
+
+## The Token Company on APIs.io
+
+Everything profiled for The Token Company is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/the-token-company/](https://apis.io/providers/the-token-company/)** — or go straight to one of the APIs or properties below.
+
+### APIs (2)
+
+- [The Token Company Compression API](https://apis.io/apis/the-token-company/the-token-company-compression-api/) — Prompt and conversation compression
+- [The Token Company Search API](https://apis.io/apis/the-token-company/the-token-company-search-api/) — Compressed web search
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [the-token-company](https://apis.io/servers/the-token-company/the-token-company/)
+
+#### Collections (2)
+
+Postman and Open Collection request collections.
+
+- [The Token Company Compression API](https://apis.io/collections/the-token-company/open-the-token-company-compression-api/)
+- [The Token Company Compression Search API](https://apis.io/collections/the-token-company/open-the-token-company-search-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [The Token Company Overlay](https://apis.io/overlays/the-token-company/the-token-company-overlay/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [The Token Company Authentication](https://apis.io/security/the-token-company/the-token-company-authentication/)
+- [The Token Company Domain Security](https://apis.io/security/the-token-company/the-token-company-domain-security/)
+- [The Token Company Trust Center](https://apis.io/security/the-token-company/the-token-company-trust-center/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [The Token Company Plans Pricing](https://apis.io/plans/the-token-company/the-token-company-plans-pricing/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.thetokencompany.com/)
+- [Documentation](https://thetokencompany.com/docs)
+- [Getting started](https://thetokencompany.com/docs/quickstart)
+- [API reference](https://thetokencompany.com/docs)
+- [Pricing](https://thetokencompany.com/pricing)
+- [Sign up](https://app.thetokencompany.com)
+- [Support](https://thetokencompany.com/contact)
+- [Blog](https://thetokencompany.com/blog)
+- [Compliance](https://trust.thetokencompany.com)
+- [Trust centre](https://trust.thetokencompany.com)
+- [Terms of service](https://thetokencompany.com/terms-and-conditions)
+- [Privacy policy](https://thetokencompany.com/privacy)
+- [GitHub](https://github.com/TheTokenCompany)
+- [Status](https://status.thetokencompany.com/)
+
+## API Evangelist rating
+
+**Kin Score 41.9** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 0.0 |
+| Contract governance | 4.5 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 66.1 |
+| Access clarity | 81.6 |
+
+**Agent readiness 21.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 27.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/the-token-company/](https://apis.io/providers/the-token-company/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for The Token Company: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/the-token-company/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
